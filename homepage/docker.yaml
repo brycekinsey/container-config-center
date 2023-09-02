@@ -1,0 +1,13 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/docker/
+
+# Using docker Proxy
+
+ dockerhost1:
+   host: 10.10.10.10
+   port: 2375
+
+ dockerhost2:
+   host: 10.10.10.10
+   port: 2375

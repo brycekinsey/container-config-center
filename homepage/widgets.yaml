@@ -1,0 +1,54 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+- resources:
+    label: dockerhost1
+    cpu: true
+    cputemp: true
+    units: imperial # only used by cpu temp
+    memory: true
+    expanded: true
+    uptime: true
+    disk: /
+
+#- glances:
+#    url: http://10.10.10.10
+#    username: 
+#    password:
+#    cputemp: true
+#    uptime: true
+#    label: example
+
+- search:
+    provider: [google, bing, duckduckgo]
+    focus: false # Optional, will set focus to the search bar on page load
+    target: _blank # One of _self, _blank, _parent or _top
+
+- openmeteo:
+    label: Atlanta
+    latitude: 33.7488
+    longitude: -84.3877
+    timezone: America/New_York
+    units: imperial # or metric
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+
+- datetime:
+    text_size: md
+    format:
+      dateStyle: long
+      timeStyle: short
+      hour12: true
+
+#- greeting:
+#    text_size: xl
+#    text: Welcome, sir!
+
+#- logo:
+#    icon: https://w7.pngwing.com/pngs/140/585/png-transparent-penguin-tux-of-math-command-linux-from-scratch-linux-kernel-penguin-animals-bird-printed-circuit-board-thumbnail.png
+
+#- unifi_console:
+#    url: http://10.10.10.10
+#    username: 
+#    password: 
+    #site: Site Name

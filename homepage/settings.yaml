@@ -1,0 +1,49 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/settings
+
+#providers:
+#  openweathermap: openweathermapapikey
+#  weatherapi: weatherapiapikey
+
+language: en
+title: My Home Page
+theme: dark # or light
+color: zinc
+headerStyle: clean
+target: _blank # Possible options include _blank, _self, and _top
+favicon: https://w7.pngwing.com/pngs/140/585/png-transparent-penguin-tux-of-math-command-linux-from-scratch-linux-kernel-penguin-animals-bird-printed-circuit-board-thumbnail.png
+hideversion: true
+showStats: true
+hideErrors: true
+fiveColumns: true
+
+background:
+  image: https://emerging-europe.com/wp-content/uploads/2022/04/bigstock-abstract-technology-background-405861944.jpeg
+  #blur: sm
+  saturate: 100
+  brightness: 90
+  opacity: 30
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  hideVisitURL: false
+
+layout:
+  Networking:
+    icon: mdi-network
+    style: row
+    columns: 5
+  Mass Data Management:
+    icon: mdi-server
+    style: row
+    columns: 5
+  Tools:
+    icon: mdi-toolbox
+    style: row
+    columns: 5
+  Media Server:
+    icon: mdi-multimedia
+    style: row
+    columns: 5

@@ -1,0 +1,69 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+# https://gethomepage.dev/en/configs/bookmarks/
+
+ - DevOps:
+     - Github:
+         - icon: github-light.png
+           abbr: GH
+           href: https://github.com/
+     - MS Azure:
+         - icon: azure.png
+           abbr: AZ
+           href: https://portal.azure.com/
+     - Amazon Web Services:
+         - icon: aws.png
+           abbr: AWS
+           href: https://aws.amazon.com/
+     - Docker:
+         - icon: docker-moby.png
+           abbr: DH
+           href: https://www.hub.docker.com/
+     - Kubernetes:
+         - icon: kubernetes.png
+           abbr: K8S
+           href: https://kubernetes.io/
+
+ - Social:
+     - Reddit:
+         - icon: reddit.png
+           abbr: RE
+           href: https://reddit.com/
+     - Mastodon:
+         - icon: mastodon.png
+           abbr: MD
+           href: https://mastodon.social/
+     - LinkedIn:
+         - icon: linkedin.png
+           abbr: LI
+           href: https://linkedin.com/
+     - Facebook:
+         - icon: facebook.png
+           abbr: FB
+           href: https://facebook.com/
+     - Twitter:
+         - icon: twitter.png
+           abbr: TW
+           href: https://twitter.com/
+     - Instagram:
+         - icon: instagram.png
+           abbr: IG
+           href: https://instagram.com/
+
+ - Entertainment:
+     - YouTube:
+         - icon: youtube.png
+           abbr: YT
+           href: https://youtube.com/
+     - ChatGPT:
+         - icon: chatgpt.png
+           abbr: AI
+           href: https://chat.openai.com/
+     - Netflix:
+         - icon: netflix.png
+           abbr: NF
+           href: https://www.netflix.com/
+     - Spotify:
+         - icon: spotify.png
+           abbr: SP
+           href: https://www.spotify.com/

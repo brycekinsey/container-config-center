@@ -1,0 +1,283 @@
+---
+# For configuration options and examples, please see: 
+# https://gethomepage.dev/en/configs/services
+# https://gethomepage.dev/en/configs/service-widgets/
+
+- Networking:
+    - UDM Pro:
+        icon: ubiquiti-networks.png
+        href: http://10.10.10.10
+        description: Gateway/Router/Firewall
+        widget:
+          type: unifi
+          url: http://10.10.10.10
+          username: homepage
+          password: {{HOMEPAGE_VAR_UDM_PRO}}
+         #site: Site Name
+    - Pi-Hole:
+        icon: pi-hole.png
+        href: http://10.10.10.10
+        description: Recursive DNS and Network-Level Ad Blocker
+        widget:
+          type: pihole
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_PI_HOLE}}
+    - NGINX Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: http://10.10.10.10:80
+        description: Reverse Proxy and SSL Cert Generator
+        server: dockerhost1
+        container: nginx-pm-app-1
+        widget:
+          type: npm
+          url: http://10.10.10.10:80
+          username: bryce@brycekinsey.com
+          password: {{HOMEPAGE_VAR_NGINX_PM}}
+    - Cloudflare Tunnel - dockerhost1:
+        icon: cloudflare-zero-trust.png
+        href: https://one.dash.cloudflare.com/
+        description: Secure Tunnel Between Cloudflare's Edge and On-Prem Network
+        widget:
+          type: cloudflared
+          accountid: {{HOMEPAGE_VAR_CLOUDFLARE_ACCOUNTID}}
+          tunnelid: {{HOMEPAGE_VAR_CLOUDFLARE_TUNNELID}}
+          key: {{HOMEPAGE_VAR_CLOUDFLARE_KEY}}
+        server: dockerhost1
+        container: cloudflare-zero-trust-access-tunnel
+    - Cloudflare Tunnel - dockerhost2:
+        icon: cloudflare-zero-trust.png
+        href: https://one.dash.cloudflare.com/
+        description: Secure Tunnel Between Cloudflare's Edge and On-Prem Network
+        widget:
+          type: cloudflared
+          accountid: {{HOMEPAGE_VAR_CLOUDFLARE_ACCOUNTID}}
+          tunnelid: {{HOMEPAGE_VAR_CLOUDFLARE_TUNNELID}}
+          key: {{HOMEPAGE_VAR_CLOUDFLARE_KEY}}
+        server: dockerhost2
+        container: cloudflare-zero-trust-access-tunnel
+    - Gluetun:
+        icon: gluetun.png
+        href: http://10.10.10.10:8080
+        description: VPN client
+        widget:
+          type: gluetun
+          url: http://10.10.10.10:8080
+        server: dockerhost1
+        container: gluetun
+    - Cloudflare DDNS:
+        icon: cloudflare.png
+        href: https://dash.cloudflare.com/login
+        description: Dynamic DNS for Public IP
+        server: dockerhost1
+        container: cloudflare_publicip_ddns-cloudflare-ddns-1
+    - Flaresolverr:
+        icon: cloudflare.png
+        href: http://10.10.10.10:1234
+        description: Proxy Server for Cloudflare and DDoS-GUARD Protection
+        server: dockerhost1
+        container: flaresolverr
+
+- Media Server:
+    - Plex:
+        icon: plex.png
+        href: https://plex.example.com
+        description: Media Server
+        widget:
+          type: plex
+          fields: ["streams", "movies", "tv"]
+          url: https://plex.example.com
+          key: {{HOMEPAGE_VAR_PLEX}}
+        server: dockerhost2
+        container: plex
+    - Tautulli:
+        icon: tautulli.png
+        href: http://10.10.10.10
+        description: Plex Monitor and Statistics Tracker
+        widget:
+          type: tautulli
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_TAUTULLI}}
+        server: dockerhost1
+        container: tautulli
+    - Audiobookshelf:
+        icon: audiobookshelf.png
+        href: http://10.10.10.10
+        description: Audiobook and Podcast Server
+        widget:
+          type: audiobookshelf
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF}}
+        server: dockerhost1
+        container: audiobookshelf-audiobookshelf-1
+    - Overseerr:
+        icon: overseerr.png
+        href: http://10.10.10.10
+        description: Request Management and Media Discovery Tool
+        widget:
+          type: overseerr
+          url: https://10.10.10.10
+          key: {{HOMEPAGE_VAR_OVERSEERR}}
+        server: dockerhost1
+        container: overseerr
+    - Radarr:
+        icon: radarr-light.png
+        href: http://10.10.10.10
+        description: PVR for Movies
+        widget:
+          type: radarr
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_RADARR}}
+        server: dockerhost1
+        container: radarr
+    - Sonarr:
+        icon: sonarr.png
+        href: http://10.10.10.10
+        description: PVR for Shows
+        widget:
+          type: sonarr
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_SONARR}}
+        server: dockerhost1
+        container: sonarr
+    - Readarr:
+        icon: readarr.png
+        href: http://10.10.10.10
+        description: Audiobook and eBook Collection Manager
+        widget:
+          type: readarr
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_READARR}}
+        server: dockerhost1
+        container: readarr
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://10.10.10.10
+        description: Indexer Manager/Proxy
+        widget:
+          type: prowlarr
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_PROWLARR}}
+        server: dockerhost1
+        container: prowlarr
+    - Bazarr:
+        icon: bazarr.png
+        href: http://10.10.10.10
+        description: Subtitle Manager
+        widget:
+          type: bazarr
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_BAZARR}}
+        server: dockerhost1
+        container: bazarr
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://10.10.10.10
+        description: Torrent Client
+        widget:
+          type: qbittorrent
+          url: http://10.10.10.10
+          username: admin
+          password: {{HOMEPAGE_VAR_QBIT}}
+        server: dockerhost1
+        container: qbittorrent
+
+- Tools:
+    - Uptime Kuma - dockerhost1:
+        icon: uptime-kuma.png
+        href: http://10.10.10.10
+        description: Uptime Monitor
+        widget:
+          type: uptimekuma
+          url: http://10.10.10.10
+          slug: allmonitors
+        server: dockerhost1
+        container: uptime-kuma
+    - Uptime Kuma - dockerhost2:
+        icon: uptime-kuma.png
+        href: http://10.10.10.10
+        description: Uptime Monitor
+        widget:
+          type: uptimekuma
+          url: http://10.10.10.10
+          slug: allmonitors
+        server: dockerhost2
+        container: uptime-kuma
+    - Portainer - dockerhost1:
+        icon: portainer.png
+        href: http://10.10.10.10
+        description: Container Manager for Docker and Kubernetes on dockerhost1 Server
+        widget:
+          type: portainer
+          url: http://10.10.10.10
+          env: 2
+          key: {{HOMEPAGE_VAR_PORTAINER}}
+        server: dockerhost1
+        container: portainer
+    - Portainer - dockerhost2:
+        icon: portainer.png
+        href: http://10.10.10.10
+        description: Container Manager for Docker and Kubernetes on dockerhost2 Server
+        widget:
+          type: portainer
+          url: http://10.10.10.10
+          env: 5
+          key: {{HOMEPAGE_VAR_PORTAINER}}
+        server: dockerhost2
+        container: portainer
+    - Bookstack:
+        icon: bookstack.png
+        href: http://10.10.10.10
+        description: Internal Lab Documentation
+        server: dockerhost1
+        container: bookstack
+    - Vaultwarden:
+        icon: vaultwarden-light.png
+        href: https://my.password.com
+        description: Password Manager
+        server: dockerhost1
+        container: vaultwarden
+    - Mesh Central:
+        icon: meshcentral.png
+        href: http://10.10.10.10
+        description: Remote Monitoring and Management (RMM)
+        server: dockerhost1
+        container: meshcentral
+    - Watchtower:
+        icon: watchtower.png
+        description: Automatic Container Image Updater
+        widget:
+          type: watchtower
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_WATCHTOWER}}
+        server: dockerhost1
+        container: watchtower-watchtower-1
+
+- Mass Data Management:
+    - Proxmox Node - HYPVE:
+        icon: proxmox-light.png
+        href: http://10.10.10.10
+        description: Hypervisor for Virtualization
+        widget:
+          type: proxmox
+          url: http://10.10.10.10
+          username: {{HOMEPAGE_VAR_PXMX_USER}}
+          password: {{HOMEPAGE_VAR_PXMX_PW}}
+    - Truenas:
+        icon: truenas.png
+        href: http://10.10.10.10
+        description: NAS
+        widget:
+          type: truenas
+          url: http://10.10.10.10
+          key: {{HOMEPAGE_VAR_TRUENAS}}
+    - Nextcloud:
+        icon: nextcloud.png
+        href: https://not.0n3driv3.com
+        description: The Non-Invasive Cloud Drive
+        widget:
+          type: nextcloud
+          url: https://not.0n3driv3.com
+          username: bryce
+          password: {{HOMEPAGE_VAR_NEXTCLOUD}}
+        server: dockerhost2
+        container: nextcloud-app-1
