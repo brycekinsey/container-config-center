@@ -1,4 +1,4 @@
-# Example Config Files 🛠️
+# Container Config Center 
 
 [![License](https://badgen.net/github/license/brycekinsey/jekport)](LICENSE)
 [![GitHub stars](https://flat.badgen.net/github/stars/brycekinsey/example-config-files)](https://github.com/brycekinsey/example-config-files/stargazers)
@@ -6,7 +6,7 @@
 
 ## Overview 
 
-This repository is a collection of sample configuration files for various tools, services, and projects that I've come across. Whether you're setting up a new project or looking to streamline your existing workflow, these config files can serve as a solid starting point.
+This repository is called the Container Config Center (CCC). It's a curated collection of template files that I've written for various services, tools, and projects. It includes Docker Compose, YAML, and other filetypes that I've written for Docker, Kubernetes, and microservices. Whether you're setting up a new project or looking to streamline your existing workflow, these config files can serve as a solid starting point.
 
 ## Features 🌟
 
