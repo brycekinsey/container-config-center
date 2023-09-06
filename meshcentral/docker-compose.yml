@@ -1,0 +1,45 @@
+version: '3'
+
+networks:
+  meshcentral-tier:
+    driver: bridge
+
+services:
+  mongodb:
+    restart: always
+    container_name: mongodb
+    # MongoDB 5.0+ requires a CPU with AVX support, which my current system does not have. 
+    # You're welcome to try latest or another version if your hardware meets the requirements.
+    image: mongo:4.4.24
+    env_file:
+      - stack.env
+    volumes:
+      # mongodb data-directory - A must for data persistence
+      - /var/lib/docker/volumes/meshcentral-rmm/mongodb_data:/data/db
+    networks:
+      - meshcentral-tier
+
+  meshcentral:
+    restart: always
+    container_name: meshcentral
+    # This is the "official" Meshcentral image, however I've also found the following to be regularly updated and reliable
+    # Unofficial meshcentral container: typhonragewind/meshcentral:mongodb-latest 
+    image: ghcr.io/ylianst/meshcentral:latest
+    depends_on:
+      - mongodb
+    ports:
+      # MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
+      - 8086:443
+    env_file:
+      - stack.env
+    volumes:
+      # config.json and other important files live here. A must for data persistence
+      - ./meshcentral/data:/opt/meshcentral/meshcentral-data
+      # where file uploads for users live
+      - ./meshcentral/meshcentral-files:/opt/meshcentral/meshcentral-files
+      # location for the meshcentral-backups - this should be mounted to an external storage
+      - ./meshcentral/meshcentral-backups:/opt/meshcentral/meshcentral-backups
+      # location for site customization files
+      - ./meshcentral/web:/opt/meshcentral/meshcentral-web
+    networks:
+      - meshcentral-tier

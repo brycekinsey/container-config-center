@@ -41,6 +41,7 @@ We welcome contributions from everyone. To contribute:
 Special thanks to the following projects for which some of these configuration files were written:
 
 - [Homepage](https://github.com/benphelps/homepage)
+- [Mesh Central](https://github.com/Ylianst/MeshCentral)
   
 Feel free to contribute your own configurations for other projects as well!
 
